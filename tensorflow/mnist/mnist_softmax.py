@@ -62,7 +62,7 @@ def main(_):
   for i in range(total_img):
     batch_xs, batch_ys = mnist.train.next_batch(100)
     if i % num_train_img == 0:
-        epoch_count = epoch_count + 1
+        epoch_count += 1
         train_accuracy = sess.run(accuracy, feed_dict={x: batch_xs, y_: batch_ys})
         valid_accuracy = sess.run(accuracy, feed_dict={x: mnist.test.images, y_: mnist.test.labels})
         # NOTE: Output format of learning curve
