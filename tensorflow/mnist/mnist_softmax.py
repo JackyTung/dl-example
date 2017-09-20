@@ -48,6 +48,9 @@ def main(_):
       tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y))
   train_step = tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy)
 
+  # Add ops to save and restore all the variables.
+  saver = tf.train.Saver()
+
   sess = tf.InteractiveSession()
   tf.global_variables_initializer().run()
   # Train
@@ -59,12 +62,17 @@ def main(_):
   for i in range(total_img):
     batch_xs, batch_ys = mnist.train.next_batch(100)
     if i % num_train_img == 0:
-        epoch_count =+ 1
+        epoch_count += 1
         train_accuracy = sess.run(accuracy, feed_dict={x: batch_xs, y_: batch_ys})
         valid_accuracy = sess.run(accuracy, feed_dict={x: mnist.test.images, y_: mnist.test.labels})
         # NOTE: Output format of learning curve
         print('\nINFO:root:Epoch[%d] Train-accuracy=%f\nINFO:root:Epoch[%d] Validation-accuracy=%f' %
                 (epoch_count, train_accuracy, epoch_count, valid_accuracy))
+        # NOTE: Save models to outdir
+        if not os.path.isdir(FLAGS.outdir):
+            os.mkdir(FLAGS.outdir)
+        save_path = os.path.join(FLAGS.outdir, "epoch-"+str(epoch_count)+".ckpt")
+        saver.save(sess, save_path)
     sess.run(train_step, feed_dict={x: batch_xs, y_: batch_ys})
 
 if __name__ == '__main__':
@@ -73,6 +81,8 @@ if __name__ == '__main__':
                       help='Directory for storing input data')
   parser.add_argument('--num-epochs', type=int, default=1,
                       help='Number of epochs')
+  parser.add_argument('--outdir', type=str, default='./model/',
+                      help='model destination')
   FLAGS, unparsed = parser.parse_known_args()
   tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
 
