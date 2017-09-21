@@ -31,7 +31,7 @@ zip code.zip loader.py model.py trainer.py
 
 ## Prepare Dataset
 - download data to local from [download-link](http://yann.lecun.com/exdb/mnist/)
-- extract *.gz because the sample program read input directly without uncompression
+- extract \*.gz because the sample program read input directly without uncompression
 ```
 gunzip train-images-idx3-ubyte.gz
 gunzip train-labels-idx1-ubyte.gz
