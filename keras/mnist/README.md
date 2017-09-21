@@ -1,4 +1,5 @@
 # Sample - Run Mnist with Keras
+The sample show how to run mnist with Keras on DeepQ platform
 
 ## Contents
 
