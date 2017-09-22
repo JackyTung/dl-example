@@ -32,15 +32,9 @@ zip code.zip loader.py model.py trainer.py
 ## Prepare Dataset
 - download data to local from [download-link](http://yann.lecun.com/exdb/mnist/)
 - extract \*.gz because the sample program read input directly without uncompression
-```
-gunzip train-images-idx3-ubyte.gz
-gunzip train-labels-idx1-ubyte.gz
-gunzip t10k-images-idx3-ubyte.gz
-gunzip t10k-labels-idx1-ubyte.gz
-```
 - zip source dataset and the name is data.zip
 ```
-zip data.zip train-images-idx3-ubyte train-labels-idx1-ubyte t10k-images-idx3-ubyte t10k-labels-idx1-ubyte
+zip data.zip train-images-idx3-ubyte.gz train-labels-idx1-ubyte.gz t10k-images-idx3-ubyte.gz t10k-labels-idx1-ubyte.gz
 ```
 - Upload the dataset (data.zip) in dataset management page
 
