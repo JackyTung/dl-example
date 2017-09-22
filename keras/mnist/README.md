@@ -4,8 +4,7 @@ The sample show how to run mnist with Keras on DeepQ platform
 ## Contents
 
 1. [Basic usages](#basic-usages)
-2. [How to prepare zip file of source code](#prepare-code)
-3. [How to prepare zip file of source dataset](#prepare-dataset)
+2. [Quick start](#quick-start)
 
 ## Basic Usages
 
@@ -14,27 +13,19 @@ The sample show how to run mnist with Keras on DeepQ platform
 python trainer.py --num-epoch=10 --outdir=output
 ```
 
-## Prepare Code
+## Quick Start
+
 - download code to local
 ```
 git clone https://github.com/csigo/dl-example.git
 ```
+- goto keras/mnist
 
-- zip source code and the name is code.zip
 ```
 cd dl-example/keras/mnist/
 ```
-```
-zip code.zip loader.py model.py trainer.py
-```
-- Choose the code (code.zip) when create training task in task management page
 
-## Prepare Dataset
-- download data to local from [download-link](http://yann.lecun.com/exdb/mnist/)
-- extract \*.gz because the sample program read input directly without uncompression
-- zip source dataset and the name is data.zip
+- pack.sh prepare code.zip and data.zip 
 ```
-zip data.zip train-images-idx3-ubyte.gz train-labels-idx1-ubyte.gz t10k-images-idx3-ubyte.gz t10k-labels-idx1-ubyte.gz
+./pack.sh
 ```
-- Upload the dataset (data.zip) in dataset management page
-
