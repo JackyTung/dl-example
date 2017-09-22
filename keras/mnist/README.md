@@ -25,7 +25,7 @@ git clone https://github.com/csigo/dl-example.git
 cd dl-example/keras/mnist/
 ```
 
-- prepare.sh prepare code.zip and data.zip 
+- pack.sh prepare code.zip and data.zip 
 ```
-./prepare.sh
+./pack.sh
 ```
